@@ -6,11 +6,16 @@
 #include "Components/ActorComponent.h"
 #include "SanitySystem.generated.h"
 
+class USanityTracker;
+
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class GAMESYSTEMSCPP_API USanitySystem : public UActorComponent
 {
 	GENERATED_BODY()
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = SanityTracker, meta = (AllowPrivateAccess = "true"))
+	USanityTracker* sanityTracker;
 
 public:	
 	// Sets default values for this component's properties
@@ -25,13 +30,18 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-	float sanityTracker;
+	
 	float radius;
 	float otherRadius;
 	float sanityEval;
 
 public:
-	void GetOtherItem() { return; };
-	void VerifySanity();
-	void SetSanity();
+	USanityTracker* GetOtherItem() { return sanityTracker; };
+	//Check if sanity tracker nearby
+	void CheckNearbyTracker();
+	//Check that tracker has value
+	void VerifySanity(USanityTracker sanityTracker);
+	//Set our sanity based on sanity tracker effect
+	void SetSanity(USanityTracker sanityTracker);
+	
 };
