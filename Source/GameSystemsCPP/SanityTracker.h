@@ -26,13 +26,15 @@ public:
 
 	bool GetSanityEffect() { return positiveSanity; }
 	float GetSanityAmount() { return sanity; }
+	float GetRadius() { return radius; }
 
 private:
 	bool positiveSanity = true;
 	float sanity;
+	float radius = 5;
 
 private:
 	void SetSanityEffect(bool effect) { positiveSanity = effect; }
-	float SetSanity(float sanity);
-		
+	float SetSanity(float _sanity) { sanity = _sanity; return sanity; }
+	float SetRadius(float _radius) { radius = _radius; return radius; }
 };

@@ -32,8 +32,3 @@ void USanityTracker::TickComponent(float DeltaTime, ELevelTick TickType, FActorC
 	// ...
 }
 
-float USanityTracker::SetSanity(float sanity)
-{
-	return 0.0f;
-}
-

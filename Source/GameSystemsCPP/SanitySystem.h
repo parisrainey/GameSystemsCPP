@@ -15,7 +15,7 @@ class GAMESYSTEMSCPP_API USanitySystem : public UActorComponent
 	GENERATED_BODY()
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = SanityTracker, meta = (AllowPrivateAccess = "true"))
-	USanityTracker* sanityTracker;
+	USanityTracker* AC_sanityTracker;
 
 public:	
 	// Sets default values for this component's properties
@@ -34,14 +34,15 @@ private:
 	float radius;
 	float otherRadius;
 	float sanityEval;
+	float currentSanity;
 
 public:
-	USanityTracker* GetOtherItem() { return sanityTracker; };
+	USanityTracker* GetOtherItem() { return AC_sanityTracker; };
+	float GetSanity() { return currentSanity; }
 	//Check if sanity tracker nearby
 	void CheckNearbyTracker();
 	//Check that tracker has value
 	void VerifySanity(USanityTracker sanityTracker);
 	//Set our sanity based on sanity tracker effect
 	void SetSanity(USanityTracker sanityTracker);
-	
 };
