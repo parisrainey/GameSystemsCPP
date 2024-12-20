@@ -14,6 +14,7 @@ class GAMESYSTEMSCPP_API USanitySystem : public UActorComponent
 {
 	GENERATED_BODY()
 
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = SanityTracker, meta = (AllowPrivateAccess = "true"))
 	USanityTracker* AC_sanityTracker;
 
@@ -30,7 +31,6 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-	
 	float radius;
 	float otherRadius;
 	float sanityEval;
@@ -39,6 +39,7 @@ private:
 public:
 	USanityTracker* GetOtherItem() { return AC_sanityTracker; };
 	float GetSanity() { return currentSanity; }
+private:
 	//Check if sanity tracker nearby
 	void CheckNearbyTracker();
 	//Check that tracker has value

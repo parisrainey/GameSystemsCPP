@@ -6,6 +6,8 @@
 #include "Components/ActorComponent.h"
 #include "SanityTracker.generated.h"
 
+class AActor;
+
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class GAMESYSTEMSCPP_API USanityTracker : public UActorComponent
