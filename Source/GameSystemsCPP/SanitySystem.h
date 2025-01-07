@@ -31,9 +31,9 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-	float radius;
+	float radius = 40.0f;
 	float otherRadius;
-	float currentSanity;
+	float currentSanity = 100.0f;
 
 public:
 	USanityTracker* GetOtherItem() { return AC_sanityTracker; };
