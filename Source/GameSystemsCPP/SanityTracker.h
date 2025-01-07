@@ -14,6 +14,8 @@ class GAMESYSTEMSCPP_API USanityTracker : public UActorComponent
 {
 	GENERATED_BODY()
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = SanityTracker, meta = (AllowPrivateAccess = "true"))
+	AActor* actor;
 public:	
 	// Sets default values for this component's properties
 	USanityTracker();
@@ -29,6 +31,7 @@ public:
 	bool GetSanityEffect() { return positiveSanity; }
 	float GetSanityAmount() { return sanity; }
 	float GetRadius() { return radius; }
+	
 
 private:
 	bool positiveSanity = true;
