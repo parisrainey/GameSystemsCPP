@@ -6,7 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "SanityTracker.generated.h"
 
-class AActor;
+
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -14,8 +14,6 @@ class GAMESYSTEMSCPP_API USanityTracker : public UActorComponent
 {
 	GENERATED_BODY()
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = SanityTracker, meta = (AllowPrivateAccess = "true"))
-	AActor* actor;
 public:	
 	// Sets default values for this component's properties
 	USanityTracker();
@@ -33,13 +31,13 @@ public:
 	float GetRadius() { return radius; }
 	
 
-private:
+public:
 	bool positiveSanity = true;
 	float sanity;
 	float radius = 5;
 
 private:
 	void SetSanityEffect(bool effect) { positiveSanity = effect; }
-	float SetSanity(float _sanity) { sanity = _sanity; return sanity; }
-	float SetRadius(float _radius) { radius = _radius; return radius; }
+	float SetSanity(float newSanity) { sanity = newSanity; return sanity; }
+	float SetRadius(float newRadius) { radius = newRadius; return radius; }
 };

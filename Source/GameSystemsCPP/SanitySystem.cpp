@@ -31,13 +31,16 @@ void USanitySystem::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 
 void USanitySystem::CheckNearbyTracker()
 {
+
 }
 
 void USanitySystem::VerifySanity(USanityTracker sanityTracker)
 {
+
 }
 
 void USanitySystem::SetSanity(USanityTracker sanityTracker)
 {
+
 }
 

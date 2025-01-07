@@ -33,7 +33,6 @@ public:
 private:
 	float radius;
 	float otherRadius;
-	float sanityEval;
 	float currentSanity;
 
 public:
