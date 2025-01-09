@@ -18,8 +18,13 @@ USanitySystem::USanitySystem()
 // Called when the game starts
 void USanitySystem::BeginPlay()
 {
-	// ...
-	
+	SetComponentTickInterval(1.0);
+	//Get all actors in scene
+
+	//Loop through array
+	//Get any sanity tracker components
+	//Keep them in sanity list
+
 }
 
 
@@ -27,6 +32,8 @@ void USanitySystem::BeginPlay()
 void USanitySystem::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	// ...
+
+	//Check sanity list for radius
 }
 
 void USanitySystem::CheckNearbyTracker()
@@ -55,6 +62,9 @@ void USanitySystem::SetSanity(USanityTracker sanityTracker)
 
 	check = VerifySanity(sanityTracker);
 
+	if (check == false)
+		return;
+
 	effect = sanityTracker.GetSanityEffect();
 	otherSanity = sanityTracker.GetSanityAmount();
 
@@ -65,10 +75,6 @@ void USanitySystem::SetSanity(USanityTracker sanityTracker)
 	else if (effect == false)
 	{
 		currentSanity -= otherSanity;
-	}
-	else
-	{
-		return;
 	}
 }
 
