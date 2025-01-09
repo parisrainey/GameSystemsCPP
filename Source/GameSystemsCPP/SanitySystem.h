@@ -33,7 +33,7 @@ public:
 private:
 	float otherRadius;
 	float currentSanity = 100.0f;
-	TArray<AActor> ActorArray;
+	TArray<AActor*> ActorArray;
 public:
 	USanityTracker* GetOtherItem() { return AC_sanityTracker; };
 	float GetSanity() { return currentSanity; }

@@ -3,6 +3,7 @@
 
 #include "SanitySystem.h"
 #include "SanityTracker.h"
+#include <Kismet/GameplayStatics.h>
 
 // Sets default values for this component's properties
 USanitySystem::USanitySystem()
@@ -20,11 +21,17 @@ void USanitySystem::BeginPlay()
 {
 	SetComponentTickInterval(1.0);
 	//Get all actors in scene
-
+	TArray<AActor*> temp;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), temp);
 	//Loop through array
-	//Get any sanity tracker components
-	//Keep them in sanity list
+	for (int i = 0; i = temp.Num(); i++)
+	{
+		//Get any sanity tracker components
+		if()
+		//Keep them in sanity list
 
+	}
+	
 }
 
 
