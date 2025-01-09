@@ -31,16 +31,44 @@ void USanitySystem::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 
 void USanitySystem::CheckNearbyTracker()
 {
-	if ()
+	
 }
 
-void USanitySystem::VerifySanity(USanityTracker sanityTracker)
+bool USanitySystem::VerifySanity(USanityTracker sanityTracker)
 {
+	float otherSanity;
+	bool effect;
 
+	if (otherSanity != NULL || 0 && effect != NULL)
+	{
+		return true;
+	}
+	else
+		return false;
 }
 
 void USanitySystem::SetSanity(USanityTracker sanityTracker)
 {
+	float otherSanity;
+	bool effect;
+	bool check;
 
+	check = VerifySanity(sanityTracker);
+
+	effect = sanityTracker.GetSanityEffect();
+	otherSanity = sanityTracker.GetSanityAmount();
+
+	if (effect == true)
+	{
+		currentSanity += otherSanity;
+	}
+	else if (effect == false)
+	{
+		currentSanity -= otherSanity;
+	}
+	else
+	{
+		return;
+	}
 }
 

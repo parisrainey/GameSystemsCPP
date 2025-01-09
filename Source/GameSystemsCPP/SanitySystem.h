@@ -42,7 +42,7 @@ private:
 	//Check if sanity tracker nearby
 	void CheckNearbyTracker();
 	//Check that tracker has value
-	void VerifySanity(USanityTracker sanityTracker);
+	bool VerifySanity(USanityTracker sanityTracker);
 	//Set our sanity based on sanity tracker effect
 	void SetSanity(USanityTracker sanityTracker);
 };
