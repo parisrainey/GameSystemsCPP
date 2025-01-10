@@ -85,11 +85,16 @@ void USanitySystem::SetSanity(USanityTracker sanityTracker)
 	effect = sanityTracker.GetSanityEffect();
 	otherSanity = sanityTracker.GetSanityAmount();
 
+	if (effect == NULL)
+		return;
+	if (!otherSanity > 0)
+		return;
+
 	if (effect == true)
 	{
 		currentSanity += otherSanity;
 	}
-	else if (effect == false)
+	else
 	{
 		currentSanity -= otherSanity;
 	}
