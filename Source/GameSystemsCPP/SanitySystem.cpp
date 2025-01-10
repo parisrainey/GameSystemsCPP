@@ -4,6 +4,7 @@
 #include "SanitySystem.h"
 #include "SanityTracker.h"
 #include <Kismet/GameplayStatics.h>
+#include "GameFramework/Actor.h"
 
 // Sets default values for this component's properties
 USanitySystem::USanitySystem()
@@ -24,14 +25,17 @@ void USanitySystem::BeginPlay()
 	TArray<AActor*> temp;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), temp);
 	//Loop through array
-	for (int i = 0; i = temp.Num(); i++)
+	for (int i = 0; i <= temp.Num(); i++)
 	{
 		//Get any sanity tracker components
-		if()
-		//Keep them in sanity list
-
+		if (temp[i]->GetComponentByClass<USanityTracker>())
+		{
+			//Keep them in sanity list
+			ActorArray.Add(temp[i]);
+		}
 	}
-	
+
+	Super::BeginPlay();
 }
 
 
@@ -41,14 +45,20 @@ void USanitySystem::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 	// ...
 
 	//Check sanity list for radius
+	CheckNearbyTracker();
+
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 }
 
 void USanitySystem::CheckNearbyTracker()
 {
-	
+	for (int i = 0; i <= ActorArray.Num(); i++)
+	{
+		if (ActorArray[i])
+	}
 }
 
-bool USanitySystem::VerifySanity(USanityTracker sanityTracker)
+bool USanitySystem::VerifySanity(USanityTracker* sanityTracker)
 {
 	float otherSanity;
 	bool effect;
@@ -67,7 +77,7 @@ void USanitySystem::SetSanity(USanityTracker sanityTracker)
 	bool effect;
 	bool check;
 
-	check = VerifySanity(sanityTracker);
+	check = VerifySanity(&sanityTracker);
 
 	if (check == false)
 		return;
