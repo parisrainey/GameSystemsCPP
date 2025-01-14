@@ -38,7 +38,7 @@ public:
 	USanityTracker* GetOtherItem() { return AC_sanityTracker; };
 	float GetSanity() { return currentSanity; }
 private:
-	//Check if sanity tracker nearby
+	//Check if sanity tracker nearby, deduct/add sanity if close and in sight
 	void CheckNearbyTracker();
 	//Check that tracker has value
 	bool VerifySanity(USanityTracker* sanityTracker);

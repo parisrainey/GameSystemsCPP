@@ -54,7 +54,22 @@ void USanitySystem::CheckNearbyTracker()
 {
 	for (int i = 0; i <= ActorArray.Num(); i++)
 	{
-		if (ActorArray[i])
+		USanityTracker* variable = ActorArray[i]->GetComponentByClass<USanityTracker>();
+		if (!IsValid(variable))
+			return;
+
+		if (FVector::Distance(GetOwner()->GetActorLocation(), variable->GetOwner()->GetActorLocation()) <= variable->GetRadius())
+		{
+			FHitResult Hit;
+			FVector TraceStart = GetOwner()->GetActorLocation();
+			FVector TraceEnd = variable->GetOwner()->GetActorLocation();
+
+			FCollisionQueryParams QueryParams;
+			QueryParams.AddIgnoredActor(GetOwner());
+
+			GetWorld()->LineTraceSingleByChannel();
+		}
+
 	}
 }
 
