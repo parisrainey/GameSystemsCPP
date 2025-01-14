@@ -60,14 +60,22 @@ void USanitySystem::CheckNearbyTracker()
 
 		if (FVector::Distance(GetOwner()->GetActorLocation(), variable->GetOwner()->GetActorLocation()) <= variable->GetRadius())
 		{
+			//Set Hit, Trace Start, and Trace End
 			FHitResult Hit;
 			FVector TraceStart = GetOwner()->GetActorLocation();
 			FVector TraceEnd = variable->GetOwner()->GetActorLocation();
 
+			//Set up QueryParams
 			FCollisionQueryParams QueryParams;
 			QueryParams.AddIgnoredActor(GetOwner());
 
-			GetWorld()->LineTraceSingleByChannel();
+			//Set Line Trace
+			GetWorld()->LineTraceSingleByChannel(Hit, TraceStart, TraceEnd, ECC_Visibility, QueryParams);
+
+			if (Hit.bBlockingHit && IsValid(Hit.GetActor()->GetComponentByClass<USanityTracker>()))
+			{
+
+			}
 		}
 
 	}
