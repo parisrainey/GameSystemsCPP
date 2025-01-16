@@ -25,7 +25,7 @@ void USanitySystem::BeginPlay()
 	TArray<AActor*> temp;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), temp);
 	//Loop through array
-	for (int i = 0; i <= temp.Num(); i++)
+	for (int i = 0; i < temp.Num(); i++)
 	{
 		//Get any sanity tracker components
 		if (temp[i]->GetComponentByClass<USanityTracker>())
@@ -52,7 +52,7 @@ void USanitySystem::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 
 void USanitySystem::CheckNearbyTracker()
 {
-	for (int i = 0; i <= ActorArray.Num(); i++)
+	for (int i = 0; i < ActorArray.Num(); i++)
 	{
 		USanityTracker* variable = ActorArray[i]->GetComponentByClass<USanityTracker>();
 		if (!IsValid(variable))
