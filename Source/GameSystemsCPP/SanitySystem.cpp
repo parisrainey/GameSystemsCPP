@@ -74,8 +74,17 @@ void USanitySystem::CheckNearbyTracker()
 
 			if (Hit.bBlockingHit && IsValid(Hit.GetActor()->GetComponentByClass<USanityTracker>()))
 			{
-
+				USanityTracker* other = Hit.GetActor()->GetComponentByClass<USanityTracker>();
+				bool positive = other->GetSanityEffect();
+				if (positive)
+				{
+					currentSanity += other->GetSanityAmount();
+				}
+				else
+					currentSanity -= other->GetSanityAmount();
 			}
+			else
+				return;
 		}
 
 	}
@@ -83,8 +92,8 @@ void USanitySystem::CheckNearbyTracker()
 
 bool USanitySystem::VerifySanity(USanityTracker* sanityTracker)
 {
-	float otherSanity;
-	bool effect;
+	float otherSanity = sanityTracker->GetSanityAmount();
+	bool effect = sanityTracker->GetSanityEffect();
 
 	if (otherSanity != NULL || 0 && effect != NULL)
 	{
@@ -110,7 +119,7 @@ void USanitySystem::SetSanity(USanityTracker sanityTracker)
 
 	if (effect == NULL)
 		return;
-	if (!otherSanity > 0)
+	if (otherSanity <= 0 || NULL)
 		return;
 
 	if (effect == true)
