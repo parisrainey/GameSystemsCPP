@@ -18,6 +18,26 @@ public:
 	// Sets default values for this component's properties
 	USanityTracker();
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = SanityTracker, meta = (AllowPrivateAccess = "true"))
+	float sanity;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = SanityTracker, meta = (AllowPrivateAccess = "true"))
+	float radius = 5;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = SanityTracker, meta = (AllowPrivateAccess = "true"))
+	bool positiveSanity;
+
+	UFUNCTION()
+	void SetSanityEffect(bool effect) { positiveSanity = effect; }
+	UFUNCTION()
+	float SetSanity(float newSanity) { sanity = newSanity; return sanity; }
+	UFUNCTION()
+	float SetRadius(float newRadius) { radius = newRadius; return radius; }
+	UFUNCTION()
+	bool GetSanityEffect() { return positiveSanity; }
+	UFUNCTION()
+	float GetSanityAmount() { return sanity; }
+	UFUNCTION()
+	float GetRadius() { return radius; }
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -25,19 +45,4 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-	bool GetSanityEffect() { return positiveSanity; }
-	float GetSanityAmount() { return sanity; }
-	float GetRadius() { return radius; }
-	
-
-public:
-	bool positiveSanity = true;
-	float sanity;
-	float radius = 5;
-
-private:
-	void SetSanityEffect(bool effect) { positiveSanity = effect; }
-	float SetSanity(float newSanity) { sanity = newSanity; return sanity; }
-	float SetRadius(float newRadius) { radius = newRadius; return radius; }
 };
